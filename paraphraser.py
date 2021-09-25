@@ -2,12 +2,12 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import streamlit as st
 
-model = AutoModelForSeq2SeqLM.from_pretrained("ramsrigouthamg/t5-large-paraphraser-diverse-high-quality")
-tokenizer = AutoTokenizer.from_pretrained("ramsrigouthamg/t5-large-paraphraser-diverse-high-quality")
+model = AutoModelForSeq2SeqLM.from_pretrained("ramsrigouthamg/t5_paraphraser")
+tokenizer = AutoTokenizer.from_pretrained("ramsrigouthamg/t5_paraphraser")
 
 import torch
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print ("device ",device)
+st.write("device ",device)
 model = model.to(device)
 
 # Beam Search
