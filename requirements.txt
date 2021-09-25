@@ -1,3 +1,4 @@
 transformers==4.10.2
 sentencepiece==0.1.96
 streamlit == 0.89.0
+torch = 1.9.1
