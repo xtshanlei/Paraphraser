@@ -12,7 +12,9 @@ model = model.to(device)
 
 # Beam Search
 st.title('Automatic Paraphraser')
-context = "Accurate, “realistic information” in marketing was important in these early conceptions because the opinion leader was assumed to transmit marketing messages more or less faithfully, without substantially altering them or having them altered by ongoing communications with other consumers"
+
+st.subheader('Original sentence:')
+context = st.text_input('Please type the sentence you want to paraphrase here')
 text = "paraphrase: "+context + " </s>"
 
 encoding = tokenizer.encode_plus(text,max_length =1000, padding=True, return_tensors="pt")
@@ -28,7 +30,7 @@ beam_outputs = model.generate(
 
 )
 
-
+st.subheader('Results:')
 for beam_output in beam_outputs:
     sent = tokenizer.decode(beam_output, skip_special_tokens=True,clean_up_tokenization_spaces=True)
     st.write(sent)
