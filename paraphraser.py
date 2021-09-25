@@ -16,7 +16,7 @@ st.title('Automatic Paraphraser')
 st.subheader('Original sentence:')
 context = st.text_input('Please type the sentence you want to paraphrase here')
 
-@cache
+@st.cache
 def para(context):
         text = "paraphrase: "+context + " </s>"
 
