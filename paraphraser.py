@@ -15,7 +15,9 @@ st.title('Automatic Paraphraser')
 
 st.subheader('Original sentence:')
 context = st.text_input('Please type the sentence you want to paraphrase here')
-if context:
+
+@cache
+def para(context):
         text = "paraphrase: "+context + " </s>"
 
         encoding = tokenizer.encode_plus(text,max_length =1000, padding=True, return_tensors="pt")
@@ -30,6 +32,9 @@ if context:
             num_return_sequences=3
 
         )
+        return beam_outputs
+if context:
+        beam_outputs = para(context)
 
         st.subheader('Results:')
         for beam_output in beam_outputs:
